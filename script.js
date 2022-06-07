@@ -20,7 +20,7 @@ console.log(mapped) //biz bir map calismasi yaptik. ama sonuc yine ayri bir arra
 // biz yukaridaki verdigimiz degerler üzerinde arrayda, küpünü alarak map özelligini kullanarak, yeni bir arrayi elde ettik. foreach e benziyor. ama yeni bir array sunuyor. map arraylerle calisiyor. 
 // ________________________________________________________________________________
 */
-
+/*
 const DATA = [
 
     {
@@ -94,3 +94,50 @@ const DATA = [
     })//Html de div icinde bulunanlari en icten en disa dogru append ederek olusturduk. 
 
     //burada map ile büyük veriler ileride geldiginde map ile isi düzenlemeyi ogrenmek gerekiyor. cunku aradan bilgileri secip düzenlemede ise yarayacak. 
+
+*/
+    //______________________________-FILTER_________________________
+
+    const numbers=[1, 12, 5, 8, 37, 86, 54, 33, 96]
+
+    const filtered= numbers.filter(el => el % 2 ==0)
+    console.log(filtered) //burada 2ye kalansiz bölünenleri siraladik filtre etmis olduk. normalde bu özellik olmasaydi if le bulmak icin ugrasacaktik. cok kullanacagimiz functionlardan biri olacak. 
+
+
+    //diger örnek;
+
+    const arr2= [1,2,3,3,5,5,5]
+
+    function filterMoreThanOne(arr2){
+       // return arr2.filter((el,i)=> el !=arr2[i+1]) //yan yana ise
+
+       return arr2.filter((el,i) =>{
+           console.log(el, i, arr2.indexOf(el))
+                return arr2.indexOf(el)==i
+    }
+    )
+}
+   
+    console.log(filterMoreThanOne(arr2)) //fitreleme esnasinda indexOf siralamyi yaparken 0 dan baslatarak yaptigi gibi birde tekrar eden sayi yada kelimelerden ilkinin sira sayisini verir. ikincisi yada ücüncü siradakilerin sadece ilkini görecegi icin sira sayilarinda ilk gördügünü verir. tekrari olanlari görmez. sira sqyilarinda. 
+
+
+
+    //_______REDUCE________________________--
+
+
+    //filter ve map de 3 deger yani parametre aliyor. REDUCE 4. yu de aliyor. 
+
+    //arr.reduce((prevValue, currentValue,i,arr)) reduce bir önceki degeri de alarak 4 lemis oluyor. 
+
+    const numbers2=[1, 12, 5, 8, 37, 86, 54, 33, 96]
+    //herbir elemani topla ve bana sonucunu ver.
+
+        const reduced= numbers2.reduce(function (prevValue, currentValue){
+
+            console.log("prevValue: " + prevValue)
+            console.log("currentValue: " + currentValue)
+            return prevValue + currentValue
+        },0)//burada baslangic degerini 0 vermmeizin sebebi 0 dan baslamasi, biz 15te verebilirdik. bize bali deger atamasi.
+
+        // normalde reduce(function(prevValue,i arr) , initialValue) seklindedir. 
+        console.log(reduced)
